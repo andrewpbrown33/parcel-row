@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>parcelrow — See the deals your county is hiding</title>
-<meta name="description" content="Parcelrow is a live county map room for commercial brokers and investors: every parcel, its zoning capacity, its owner's portfolio, and the development pipeline — rebuilt from county records every week, for any county in America.">
+<meta name="description" content="Parcelrow is a live county map room for commercial brokers and investors: every parcel, its zoning capacity, its owner's portfolio, and the development pipeline — rebuilt weekly from county records, for any county in America.">
 <link rel="icon" type="image/svg+xml" href="assets/icon.svg">
 <meta property="og:title" content="parcelrow — See the deals your county is hiding">
 <meta property="og:description" content="A live county map room: every parcel, zoning capacity, owner portfolios, and the development pipeline — rebuilt weekly from county records.">
@@ -28,7 +28,6 @@
   body { background:var(--cream); color:var(--ink); font-family:var(--serif); margin:0; -webkit-font-smoothing:antialiased; }
   .wrap { max-width:1100px; margin:0 auto; padding:0 24px; }
   .wm { font-family:var(--sans); font-weight:800; letter-spacing:-.02em; text-transform:lowercase; }
-  .mono { font-family:var(--mono); }
   a { color:var(--brand); }
 
   /* nav */
@@ -72,9 +71,6 @@
   .show { border:1px solid var(--line); background:#fff; position:relative; }
   .show-img { position:relative; }
   .show-img img { display:block; width:100%; height:auto; }
-  /* interactive pins: explanation appears beside the number on hover/tap.
-     The ledger below stays — hidden content doesn't get seen; the pins are
-     the delight, the ledger is the guarantee. */
   .hot { position:absolute; transform:translate(-50%,-50%); }
   .pin { width:26px; height:26px; border-radius:50%; background:var(--brand); color:#fff;
          font-family:var(--mono); font-size:12.5px; font-weight:700; display:flex; align-items:center; justify-content:center;
@@ -108,20 +104,17 @@
   .countline { font-family:var(--mono); font-size:11px; letter-spacing:.08em; color:var(--mut); padding:12px 18px; border-top:1px solid var(--line); background:var(--card); }
   .countline b { color:var(--ink); }
 
-  /* value props */
-  .props { display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:6px; }
-  @media (max-width:880px){ .props { grid-template-columns:1fr; } }
-  .prop { border:1px solid var(--line); background:#fff; display:flex; flex-direction:column; }
-  .prop.wide { grid-column:1 / -1; display:grid; grid-template-columns:1fr 1fr; }
-  @media (max-width:880px){ .prop.wide { grid-template-columns:1fr; } }
-  .prop img { display:block; width:100%; height:100%; object-fit:cover; }
-  .prop .txt { padding:22px; display:flex; flex-direction:column; gap:9px; }
-  .prop h3 { font-size:21px; font-weight:400; margin:0; }
-  .prop p { font-family:var(--sans); font-size:13.5px; color:var(--mut); line-height:1.6; margin:0; }
-  .prop ul { margin:4px 0 0; padding-left:18px; font-family:var(--sans); font-size:13px; color:var(--mut); line-height:1.7; }
-  .prop .imgbox { border-bottom:1px solid var(--line); }
-  .prop.wide .imgbox { border-bottom:0; border-left:1px solid var(--line); order:2; }
-  @media (max-width:880px){ .prop.wide .imgbox { border-left:0; order:0; } }
+  /* three wins — equal columns, numbered, one visual each */
+  .wins { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:22px; }
+  @media (max-width:880px){ .wins { grid-template-columns:1fr; } }
+  .win { border:1px solid var(--line); background:#fff; display:flex; flex-direction:column; }
+  .win .imgbox { height:172px; overflow:hidden; border-bottom:1px solid var(--line); }
+  .win .imgbox img { display:block; width:100%; height:100%; object-fit:cover; object-position:center top; }
+  .win .txt { padding:18px 20px 22px; display:flex; flex-direction:column; gap:9px; flex:1; }
+  .win .k { font-family:var(--mono); font-size:10px; letter-spacing:.2em; color:var(--brand); text-transform:uppercase; }
+  .win h3 { font-size:20px; font-weight:400; margin:0; line-height:1.25; text-wrap:balance; }
+  .win p { font-family:var(--sans); font-size:13px; color:var(--mut); line-height:1.6; margin:0; }
+  .win ul { margin:auto 0 0; padding:10px 0 0 18px; font-family:var(--sans); font-size:12.5px; color:var(--mut); line-height:1.7; border-top:1px solid var(--line); }
 
   /* loop */
   .loop { display:grid; grid-template-columns:1fr 1fr 1fr; gap:22px; }
@@ -130,56 +123,23 @@
   .loop h4 { font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; margin:0 0 8px; color:var(--ink); }
   .loop p { font-family:var(--sans); font-size:13.5px; color:var(--mut); line-height:1.6; margin:0; }
 
-  /* markets */
-  .mkt { display:flex; gap:10px; flex-wrap:wrap; margin:14px 0 16px; }
+  /* teaser bands → markets / pricing pages */
+  .teaser { border:1px solid var(--line); background:var(--card); padding:26px 28px; display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap; }
+  .teaser.gold { background:var(--gold-pale); border-color:var(--gold); }
+  .teaser h2 { margin-bottom:6px; }
+  .teaser .lede { margin:0; }
+  .tz { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
   .chip { font-family:var(--mono); font-size:11px; letter-spacing:.1em; padding:9px 13px; border:1px solid var(--line); background:#fff; }
   .chip.live { border-color:var(--live); color:var(--live); background:var(--live-wash); }
   .chip.q { border-style:dashed; color:var(--mut); }
 
-  /* pricing */
-  .tiers { display:grid; grid-template-columns:1fr 1.06fr 1fr; gap:16px; align-items:stretch; margin-top:8px; }
-  @media (max-width:880px){ .tiers { grid-template-columns:1fr; } }
-  .tier { border:1px solid var(--line); background:#fff; padding:20px; display:flex; flex-direction:column; gap:9px; }
-  .tier.hot { border:2px solid var(--brand); position:relative; }
-  .hotflag { position:absolute; top:-11px; left:16px; background:var(--brand); color:#fff; font-family:var(--mono); font-size:9px; letter-spacing:.14em; padding:3px 8px; text-transform:uppercase; }
-  .tier .tn { font-family:var(--mono); font-size:10px; letter-spacing:.16em; color:var(--mut); text-transform:uppercase; }
-  .tier .pp { font-size:32px; }
-  .tier .pp small { font-size:13.5px; color:var(--mut); font-family:var(--sans); }
-  .tier ul { margin:0; padding-left:18px; font-family:var(--sans); font-size:12.5px; color:var(--mut); line-height:1.7; }
-  .founding { border:1px solid var(--gold); background:var(--gold-pale); padding:14px 18px; margin-top:14px;
-              font-family:var(--sans); font-size:13.5px; }
-  .founding .k { font-family:var(--mono); font-size:9.5px; letter-spacing:.12em; background:var(--gold-ink); color:#fff; padding:3px 7px; margin-right:8px; text-transform:uppercase; }
   .subcta { font-family:var(--sans); font-size:11.5px; color:var(--mut); margin-top:6px; }
-  .anchorline { font-family:var(--serif); font-style:italic; font-size:15px; color:var(--ink); margin:4px 0 18px; }
-  /* the trial, as a timeline — risk shown, not hidden */
-  .timeline { border:1px solid var(--line); background:#fff; margin-top:18px; display:grid; grid-template-columns:1fr 1fr 1fr; }
-  @media (max-width:880px){ .timeline { grid-template-columns:1fr; } }
-  .tl { padding:16px 18px 18px; border-right:1px solid var(--line); position:relative; }
-  .tl:last-child { border-right:0; }
-  @media (max-width:880px){ .tl { border-right:0; border-bottom:1px solid var(--line); } .tl:last-child { border-bottom:0; } }
-  .tl .d { font-family:var(--mono); font-size:9.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--brand); margin-bottom:6px; display:flex; align-items:center; gap:7px; }
-  .tl .d::before { content:""; width:9px; height:9px; border-radius:50%; background:var(--brand); display:inline-block; }
-  .tl:nth-child(2) .d { color:var(--gold-ink); } .tl:nth-child(2) .d::before { background:var(--gold); }
-  .tl h4 { font-family:var(--sans); font-weight:700; font-size:13.5px; margin:0 0 4px; }
-  .tl p { font-family:var(--sans); font-size:12.5px; color:var(--mut); line-height:1.55; margin:0; }
-
-  /* founder */
-  .founder { border:1px solid var(--line); background:var(--card); padding:26px; display:flex; gap:20px; align-items:flex-start; max-width:760px; }
-  .founder .sig { font-family:var(--sans); font-size:13px; color:var(--mut); margin-top:10px; }
-  .founder p { font-size:15.5px; line-height:1.65; margin:0; font-style:italic; }
-  .founder svg { flex:0 0 44px; width:44px; height:44px; }
-
-  /* faq */
-  .faq { max-width:760px; }
-  .faq dt { font-family:var(--sans); font-weight:700; font-size:14.5px; margin:18px 0 5px; }
-  .faq dd { font-family:var(--sans); font-size:13.5px; color:var(--mut); line-height:1.6; margin:0; }
 
   /* final cta + footer */
   .final { background:var(--vault); margin-top:54px; }
   .final .in { max-width:1100px; margin:0 auto; padding:44px 24px; display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; }
   .final .ey { font-family:var(--mono); font-size:10px; letter-spacing:.3em; color:var(--gold); text-transform:uppercase; margin-bottom:8px; }
   .final h2 { color:var(--cream); margin:0; }
-  .final .wm { font-size:20px; }
   footer { background:var(--vault); border-top:1px solid #2e2820; }
   footer .in { max-width:1100px; margin:0 auto; padding:20px 24px; display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap;
                font-family:var(--sans); font-size:12.5px; color:#8a8272; }
@@ -195,19 +155,19 @@
     <span class="by">a Vantrow company</span>
   </div>
   <div class="nav-r">
-    <a href="#markets">Markets</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a>
-    <a class="btn btn-primary btn-sm" href="#pricing">Client login</a>
+    <a href="markets.html">Markets</a><a href="pricing.html">Pricing</a>
+    <a class="btn btn-primary btn-sm" href="pricing.html">Client login</a>
   </div>
 </div></nav>
 
 <header class="wrap hero">
   <div>
-    <div class="proofline">75,736 parcels live · 1,498 pipeline projects tracked · rebuilt every Monday</div>
+    <div class="proofline">75,736 parcels live · any county on request · rebuilt every Monday</div>
     <h1>See the deals your county is hiding.</h1>
     <p class="sub">Parcelrow is a live map room for commercial brokers and investors: every parcel, its zoning capacity, its owner's whole portfolio, and the development pipeline — rebuilt from county records every week. Built county by county, for any county in America.</p>
     <div class="cta-row">
-      <a class="btn btn-primary" href="#pricing">Open your county →</a>
-      <a class="btn btn-quiet" href="#pricing">See pricing</a>
+      <a class="btn btn-primary" href="pricing.html">Open your county →</a>
+      <a class="btn btn-quiet" href="pricing.html">See pricing</a>
     </div>
     <div class="fud">No commitment · 7-day free trial · from $149/county · we email you the day before your trial ends.</div>
     <div class="trust"><b>Every number traces to a county record.</b> Nothing walked, nothing guessed — parcels from the state cadastre, capacity from the county's own code, filings from the clerk. Sources cited on every card.</div>
@@ -252,33 +212,37 @@
 </section>
 
 <section class="wrap">
-  <div class="eyebrow">What you can do with it</div>
-  <h2>Three ways brokers win with a map room.</h2>
-  <div class="props" style="margin-top:22px">
-    <div class="prop">
-      <div class="imgbox"><img src="assets/parcel-card.jpg" alt="A parcel card: 8800 Okeechobee Rd, flagged underbuilt, with the full capacity calculation, owner, and land value shown" width="416" height="444"></div>
+  <div class="eyebrow">What the room does</div>
+  <h2>Three ways brokers win the county.</h2>
+  <p class="lede">Every screen in the room answers one of three working questions: what should I chase, what can this lot carry, and what's coming that changes both.</p>
+  <div class="wins">
+    <article class="win">
+      <div class="imgbox"><img src="assets/map-hero.jpg" alt="Map detail: underbuilt parcels in orange, assemblages in violet, upzone screens dashed in gold" width="650" height="400"></div>
       <div class="txt">
-        <h3>Know the math on every lot.</h3>
-        <p>Click any parcel: zoning, future land use, acreage, and the capacity calculation shown in full — with its method named. Proxies labeled as proxies. Screens labeled as screens, never verdicts.</p>
-        <ul><li>Utilization vs. zoned capacity, computed per county code</li><li>Owner and land value from the state roll</li></ul>
+        <div class="k">01 · Find</div>
+        <h3>Surface the deals nobody's listed.</h3>
+        <p>The room flags what a windshield tour can't: underbuilt lots, quiet assemblages, and land the county's own future-land-use map has already promoted.</p>
+        <ul><li>281 underbuilt parcels flagged across the first two counties</li><li>Assemblage detection the week the deed records</li></ul>
       </div>
-    </div>
-    <div class="prop">
-      <div class="txt" style="padding-top:26px">
-        <h3>Know every owner — and everything else they hold.</h3>
-        <p>Owner portfolios roll up automatically: every development-relevant parcel a name controls across the county, acreage totaled, asset mix bucketed. When someone starts assembling, the map says so before the market does.</p>
-        <ul><li>Portfolio rollups by normalized owner</li><li>Assemblage detection on adjacency + common ownership</li><li>Post-it markers for every development-relevant sale</li></ul>
-        <p style="margin-top:8px"><a href="#pricing" style="font-family:var(--sans); font-weight:600">Open your county →</a></p>
+    </article>
+    <article class="win">
+      <div class="imgbox"><img src="assets/parcel-card.jpg" alt="A parcel card: flagged underbuilt, with the full capacity calculation, owner, and land value" width="416" height="444"></div>
+      <div class="txt">
+        <div class="k">02 · Know</div>
+        <h3>Underwrite any lot in one click.</h3>
+        <p>Zoning, future land use, acreage, and the capacity calculation shown in full — with the owner's whole county position beside it. Proxies labeled as proxies; screens never dressed up as verdicts.</p>
+        <ul><li>Capacity math shown and its method named, per county code</li><li>Owner portfolios roll up scattered holdings automatically</li></ul>
       </div>
-    </div>
-    <div class="prop wide">
-      <div class="imgbox"><img src="assets/map-pipeline.jpg" alt="Two counties of the Parcelrow map: development pipeline polygons in blue and green across 75,736 parcels" width="900" height="677"></div>
-      <div class="txt" style="justify-content:center">
-        <h3>Watch the pipeline move before it breaks ground.</h3>
-        <p>County-published development filings mapped as live polygons — pending applications in blue, entitled-but-unbuilt in green — counted honestly, once per site. 1,498 live projects and 90,160 housing units tracked across the first two counties alone.</p>
-        <ul><li>Every filing dated, statused, and linked to its source</li><li>Lapsed applications leave the map — no zombie pipeline</li></ul>
+    </article>
+    <article class="win">
+      <div class="imgbox"><img src="assets/map-pipeline.jpg" alt="Two counties of the map: development pipeline polygons in blue and green across 75,736 parcels" width="900" height="677"></div>
+      <div class="txt">
+        <div class="k">03 · Watch</div>
+        <h3>See the pipeline before it breaks ground.</h3>
+        <p>County-published filings mapped as live polygons — pending in blue, entitled-but-unbuilt in green — counted honestly, once per site, and refreshed every week.</p>
+        <ul><li>1,498 live projects · 90,160 housing units tracked</li><li>Lapsed filings leave the map — no zombie pipeline</li></ul>
       </div>
-    </div>
+    </article>
   </div>
 </section>
 
@@ -292,83 +256,33 @@
   </div>
 </section>
 
-<section class="wrap" id="markets">
-  <div class="eyebrow">Available markets</div>
-  <h2>Built county by county. Yours on request.</h2>
-  <div class="mkt">
-    <span class="chip live">● INDIAN RIVER CO, FL — LIVE</span>
-    <span class="chip live">● ST. LUCIE CO, FL — LIVE</span>
-    <span class="chip q">○ BREVARD CO, FL — IN THE QUEUE</span>
-    <span class="chip q">○ MARTIN CO, FL — IN THE QUEUE</span>
-    <span class="chip q">○ YOUR COUNTY — BUILT ON REQUEST</span>
-  </div>
-  <p class="lede">The machine that built the first two counties is market-agnostic: state cadastre in, county code applied, map room out. Request any county in America and it enters the build queue — founding accounts pick where we go next.</p>
-  <a class="btn btn-quiet" href="mailto:andrew@parcelrow.com?subject=Build%20my%20county">Request your county</a>
-</section>
-
-<section class="wrap" id="pricing">
-  <div class="eyebrow">Pricing</div>
-  <h2>One price per county. No seats, no meters, no calls.</h2>
-  <p class="anchorline">One sourced deal pays for years of the room.</p>
-  <div class="tiers">
-    <div class="tier">
-      <div class="tn">One county</div>
-      <div class="pp">$149<small> /mo</small></div>
-      <ul><li>Your county's full map room</li><li>Capacity math on every parcel</li><li>Owners, assemblages, pipeline</li><li>Annual $1,490 — 2 months free</li></ul>
-      <div><a class="btn btn-primary" href="mailto:andrew@parcelrow.com?subject=Start%20my%207-day%20trial">Start 7-day free trial →</a>
-      <div class="subcta">No commitment · cancel anytime</div></div>
-    </div>
-    <div class="tier hot">
-      <span class="hotflag">Most popular</span>
-      <div class="tn">Your market · 3 counties</div>
-      <div class="pp">$249<small> /mo</small></div>
-      <ul><li>Any three counties, one map room</li><li>Your whole working market covered</li><li>Counties you need get built on request</li><li>Annual $2,490 — 2 months free</li></ul>
-      <div><a class="btn btn-primary" href="mailto:andrew@parcelrow.com?subject=Start%20my%207-day%20trial%20(3%20counties)">Start 7-day free trial →</a>
-      <div class="subcta">No commitment · cancel anytime</div></div>
-    </div>
-    <div class="tier">
-      <div class="tn">Your market · custom</div>
-      <div class="pp" style="font-size:21px; padding-top:9px">Talk to the founder</div>
-      <ul><li>We build your county the way we built ours</li><li>Any US county — priority in the queue</li><li>Team access, custom scope</li></ul>
-      <a class="btn btn-quiet" href="mailto:andrew@parcelrow.com?subject=Custom%20market" style="align-self:flex-start">Request your market</a>
-    </div>
-  </div>
-  <div class="founding"><span class="k">Founding rate</span> First 25 accounts in each county: <b>$99/mo, locked for as long as you stay.</b> Real scarcity — when a county's 25 are gone, they're gone.</div>
-  <div class="timeline">
-    <div class="tl"><div class="d">Today</div><h4>Full access, instantly.</h4><p>Card up front, nothing charged. Open your county and click your first parcel within the minute.</p></div>
-    <div class="tl"><div class="d">Day 6</div><h4>We email you — on purpose.</h4><p>A plain reminder the day before your trial ends, with a one-click cancel link. Decide with a clear head; nobody gets charged by ambush.</p></div>
-    <div class="tl"><div class="d">Day 7</div><h4>Stay, or walk with your work.</h4><p>Stay and the card is charged. Cancel and your saved searches and pins are preserved in case you come back.</p></div>
-  </div>
-</section>
-
 <section class="wrap">
-  <div class="eyebrow">From the founder</div>
-  <div class="founder">
-    <svg viewBox="0 0 100 100" aria-hidden="true"><rect x="20" y="20" width="60" height="60" fill="none" stroke="var(--brand)" stroke-width="8"/><line x1="50" y1="20" x2="50" y2="80" stroke="var(--brand)" stroke-width="7"/><line x1="20" y1="50" x2="80" y2="50" stroke="var(--brand)" stroke-width="7"/><rect x="53.5" y="23.5" width="23" height="23" fill="var(--gold)"/></svg>
-    <div>
-      <p>"The best brokers I know carry their county in their head. Parcelrow is that — on a wall, current every Monday, for any county. I built the first two the hard way so yours takes a request, not a decade. Email me directly; I answer."</p>
-      <div class="sig">— Andrew Brown · Founder, Parcelrow · <a href="mailto:andrew@parcelrow.com">andrew@parcelrow.com</a></div>
+  <div class="teaser">
+    <div style="max-width:56ch">
+      <div class="eyebrow" style="margin-bottom:6px">Available markets</div>
+      <h2 style="font-size:26px">Built county by county. Yours on request.</h2>
+      <p class="lede">Two Florida counties live today — 75,736 parcels between them. Any US county enters the build queue on request.</p>
+    </div>
+    <div class="tz">
+      <span class="chip live">● 2 LIVE</span>
+      <span class="chip q">○ 2 IN THE QUEUE</span>
+      <a class="btn btn-quiet" href="markets.html">Browse markets →</a>
     </div>
   </div>
 </section>
 
-<section class="wrap faq" id="faq">
-  <div class="eyebrow">Questions, answered straight</div>
-  <h2>What brokers ask before opening a county.</h2>
-  <dl>
-    <dt>Where does the data come from?</dt>
-    <dd>Public records only: the state cadastre for parcels and sales, the county's own zoning and future-land-use layers, and the county's filing systems for the development pipeline. Every card cites its source.</dd>
-    <dt>How fresh is it?</dt>
-    <dd>The whole map room is rebuilt every Monday, automatically. The status bar shows the pull date — you'll never wonder.</dd>
-    <dt>What happens when my trial ends?</dt>
-    <dd>We email you the day before. If you stay, the card on file is charged. If you cancel — one click — your saved work is preserved in case you come back.</dd>
-    <dt>Why do you ask for a card up front?</dt>
-    <dd>Because it keeps the room serious. Card-up-front filters for people who actually intend to work the county — and the day-6 reminder means the card is a convenience, not a trap.</dd>
-    <dt>My county isn't live. How long does a build take?</dt>
-    <dd>The pipeline that built two counties is repeatable: most US counties can be live within weeks of a request, faster where the county publishes good data. Founding accounts steer the queue.</dd>
-    <dt>Is this a replacement for CoStar or Reonomy?</dt>
-    <dd>No — it's the thing they don't make: a single county, mapped to the parcel, with zoning capacity math and a live pipeline, at a price a solo broker can expense. Depth over breadth.</dd>
-  </dl>
+<section class="wrap" style="padding-bottom:0">
+  <div class="teaser gold">
+    <div style="max-width:56ch">
+      <div class="eyebrow" style="margin-bottom:6px">Pricing</div>
+      <h2 style="font-size:26px">From $149 per county. No seats, no meters, no calls.</h2>
+      <p class="lede">Founding rate $99/mo locked for the first 25 accounts in each county · 7-day free trial · cancel in one click.</p>
+    </div>
+    <div class="tz">
+      <div><a class="btn btn-primary" href="pricing.html">See pricing →</a>
+      <div class="subcta">No commitment · cancel anytime</div></div>
+    </div>
+  </div>
 </section>
 
 <div class="final">
@@ -378,7 +292,7 @@
       <h2>Your county is waiting.</h2>
     </div>
     <div>
-      <a class="btn btn-primary" href="mailto:andrew@parcelrow.com?subject=Open%20my%20county">Open your county →</a>
+      <a class="btn btn-primary" href="pricing.html">Open your county →</a>
       <div class="subcta" style="color:#8a8272">No commitment · cancel anytime</div>
     </div>
   </div>

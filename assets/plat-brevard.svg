@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 280" preserveAspectRatio="xMidYMid slice">
+<rect width="640" height="280" fill="#faf7ef"/>
+  <rect x="-20.0" y="-20.0" width="195.5" height="173.9" fill="#efe9d9" stroke="#5a5442" stroke-width="1.4"/>
+  <rect x="191.5" y="-20.0" width="82.7" height="67.8" fill="#e2d3a8" stroke="#5a5442" stroke-width="1.4"/>
+  <rect x="274.2" y="-20.0" width="71.0" height="67.8" fill="#ddd5c0" stroke="#5a5442" stroke-width="1.4"/>
+  <rect x="191.5" y="47.8" width="87.9" height="106.1" fill="#ddd5c0" stroke="#8a7a3f" stroke-width="2" stroke-dasharray="7 5"/>
+  <rect x="279.4" y="47.8" width="65.8" height="106.1" fill="#efe9d9" stroke="#8a7a3f" stroke-width="2" stroke-dasharray="7 5"/>
+  <rect x="361.2" y="-20.0" width="97.9" height="71.5" fill="#efe9d9" stroke="#5a5442" stroke-width="1.4"/>
+  <rect x="459.2" y="-20.0" width="60.8" height="71.5" fill="#a9bda4" stroke="#5a5442" stroke-width="1.4"/>
+  <rect x="361.2" y="51.5" width="79.4" height="102.5" fill="#ddd5c0" stroke="#5a5442" stroke-width="1.4"/>
+  <rect x="440.6" y="51.5" width="79.4" height="102.5" fill="#e2d3a8" stroke="#5a5442" stroke-width="1.4"/>
+  <rect x="-20.0" y="169.9" width="112.7" height="62.2" fill="#efe9d9" stroke="#8a7a3f" stroke-width="2" stroke-dasharray="7 5"/>
+  <rect x="-20.0" y="232.1" width="112.7" height="67.9" fill="#dd9a55" opacity=".55" stroke="#5a5442" stroke-width="1.4"/>
+  <rect x="92.7" y="169.9" width="82.9" height="81.2" fill="#8a68b5" opacity=".55" stroke="#5a5442" stroke-width="1.4"/>
+  <rect x="92.7" y="251.1" width="82.9" height="48.9" fill="#dd9a55" opacity=".55" stroke="#5a5442" stroke-width="1.4"/>
+  <rect x="191.5" y="169.9" width="153.7" height="80.0" fill="#ddd5c0" stroke="#8a7a3f" stroke-width="2" stroke-dasharray="7 5"/>
+  <rect x="191.5" y="249.9" width="86.4" height="50.1" fill="#ddd5c0" stroke="#5a5442" stroke-width="1.4"/>
+  <rect x="277.9" y="249.9" width="67.4" height="50.1" fill="#a9bda4" stroke="#5a5442" stroke-width="1.4"/>
+  <rect x="361.2" y="169.9" width="96.0" height="46.0" fill="#efe9d9" stroke="#5a5442" stroke-width="1.4"/>
+  <rect x="457.3" y="169.9" width="62.7" height="46.0" fill="#8a68b5" opacity=".55" stroke="#5a5442" stroke-width="1.4"/>
+  <rect x="361.2" y="215.9" width="158.8" height="84.1" fill="#efe9d9" stroke="#8a7a3f" stroke-width="2" stroke-dasharray="7 5"/>
+
+  <path d="M520 0 L512 280 L556 280 L562 0 Z" fill="#8fa9b8" opacity=".45"/>
+  <path d="M562 0 L556 280 L588 280 L594 0 Z" fill="#fbf8f1" stroke="#b9b29e" stroke-width="2"/>
+  <path d="M594 0 L588 280 L640 280 L640 0 Z" fill="#8fa9b8" opacity=".55"/>
+</svg>
