@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Parcelrow favicon: the Quarter Section on a cream tile.
+       Same construction as Eaverow's icon.svg (brand geometry on an rx-22
+       cream tile) — the family's favicon convention. -->
+  <rect width="100" height="100" rx="22" fill="#f7f3ea"/>
+  <rect x="20" y="20" width="60" height="60" fill="none" stroke="#4a72a0" stroke-width="8" stroke-linejoin="round"/>
+  <line x1="50" y1="20" x2="50" y2="80" stroke="#4a72a0" stroke-width="7"/>
+  <line x1="20" y1="50" x2="80" y2="50" stroke="#4a72a0" stroke-width="7"/>
+  <rect x="53.5" y="23.5" width="23" height="23" fill="#b8956a"/>
+</svg>
