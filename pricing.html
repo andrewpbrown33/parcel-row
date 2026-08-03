@@ -4,9 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pricing — parcelrow</title>
-<meta name="description" content="One price per county. $149/mo, 7-day free trial, founding rate $99 locked for the first 25 accounts in each county. No seats, no meters, no calls.">
+<meta name="description" content="One price per county. $149/mo or $1,428/yr (20% off), 7-day free trial, and a lifetime $99/mo founder rate for anyone who requests a county before it exists. No seats, no meters, no calls.">
 <link rel="icon" type="image/svg+xml" href="assets/icon.svg">
 <link rel="stylesheet" href="site.css">
+<!-- vantrow:org-jsonld:start -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://parcelrow.com/#organization","name":"Parcelrow","url":"https://parcelrow.com","logo":"https://getvantrow.com/brand/parcelrow/parcelrow-mark.svg","description":"See the deals your county is hiding — parcel data, zoning capacity, and development signals on a live map.","parentOrganization":{"@id":"https://getvantrow.com/#organization"}}</script>
+<!-- vantrow:org-jsonld:end -->
 </head>
 <body>
 <nav><div class="wrap nav-in">
@@ -16,8 +19,8 @@
     <span class="by">a Vantrow company</span>
   </a>
   <div class="nav-r">
-    <a href="markets.html">Markets</a><a class="on" href="pricing.html">Pricing</a>
-    <a class="btn btn-primary btn-sm" href="mailto:andrew@parcelrow.com?subject=Client%20login">Client login</a>
+    <a href="markets.html">Markets</a><a class="on" href="pricing.html">Pricing</a><a href="about.html">About</a>
+    <a class="btn btn-primary btn-sm" href="https://app.parcelrow.com/login">Client login</a>
   </div>
 </div></nav>
 
@@ -30,30 +33,34 @@
   </header>
 
   <section style="padding-top:10px">
-    <div class="tiers">
+    <div class="billtoggle" id="billtoggle">
+      <button type="button" class="on" data-cycle="monthly">Monthly</button>
+      <button type="button" data-cycle="annual">Annual · 20% off</button>
+    </div>
+    <div class="tiers" id="tiers">
       <div class="tier">
         <div class="tn">One county</div>
-        <div class="pp">$149<small> /mo</small></div>
+        <div class="pp"><span class="mo">$149<small> /mo</small></span><span class="yr">$1,428<small> /yr</small></span></div>
         <ul>
           <li>Your county's full map room</li>
           <li>Capacity math on every parcel</li>
           <li>Owners, assemblages, pipeline</li>
-          <li>Annual $1,490 — 2 months free</li>
+          <li><span class="mo">Or $1,428 billed annually — 20% off</span><span class="yr">$119/mo equivalent, billed once</span></li>
         </ul>
-        <div class="cta"><a class="btn btn-primary" href="mailto:andrew@parcelrow.com?subject=Start%20my%207-day%20trial">Start 7-day free trial →</a>
+        <div class="cta"><a class="btn btn-primary" data-monthly="https://app.parcelrow.com/api/checkout?plan=county" data-annual="https://app.parcelrow.com/api/checkout?plan=county_annual" href="https://app.parcelrow.com/api/checkout?plan=county">Start 7-day free trial →</a>
         <div class="subcta">No commitment · cancel anytime</div></div>
       </div>
       <div class="tier hot">
         <span class="hotflag">Most popular</span>
         <div class="tn">Your market · 3 counties</div>
-        <div class="pp">$249<small> /mo</small></div>
+        <div class="pp"><span class="mo">$249<small> /mo</small></span><span class="yr">$2,388<small> /yr</small></span></div>
         <ul>
           <li>Any three counties, one map room</li>
           <li>Your whole working market covered</li>
           <li>Counties you need get built on request</li>
-          <li>Annual $2,490 — 2 months free</li>
+          <li><span class="mo">Or $2,388 billed annually — 20% off</span><span class="yr">$199/mo equivalent, billed once</span></li>
         </ul>
-        <div class="cta"><a class="btn btn-primary" href="mailto:andrew@parcelrow.com?subject=Start%20my%207-day%20trial%20(3%20counties)">Start 7-day free trial →</a>
+        <div class="cta"><a class="btn btn-primary" data-monthly="https://app.parcelrow.com/api/checkout?plan=bundle" data-annual="https://app.parcelrow.com/api/checkout?plan=bundle_annual" href="https://app.parcelrow.com/api/checkout?plan=bundle">Start 7-day free trial →</a>
         <div class="subcta">No commitment · cancel anytime</div></div>
       </div>
       <div class="tier">
@@ -67,7 +74,21 @@
         <div class="cta"><a class="btn btn-quiet" href="mailto:andrew@parcelrow.com?subject=Custom%20market">Request your market →</a></div>
       </div>
     </div>
-    <div class="founding"><span class="k">Founding rate</span> First 25 accounts in each county: <b>$99/mo, locked for as long as you stay.</b> Real scarcity — when a county's 25 are gone, they're gone.</div>
+    <script>
+    (function () {
+      var toggle = document.getElementById("billtoggle"), tiers = document.getElementById("tiers");
+      toggle.addEventListener("click", function (e) {
+        var b = e.target.closest("button"); if (!b) return;
+        var annual = b.dataset.cycle === "annual";
+        tiers.classList.toggle("annual", annual);
+        toggle.querySelectorAll("button").forEach(function (x) { x.classList.toggle("on", x === b); });
+        tiers.querySelectorAll("a[data-annual]").forEach(function (a) {
+          a.href = annual ? a.dataset.annual : a.dataset.monthly;
+        });
+      });
+    })();
+    </script>
+    <div class="founding"><span class="k">The founder rate</span> Request a county that isn't built yet and lock <b>$99/mo on it — for life — the day it ships.</b> Every request also moves that county up the build queue. <a href="https://app.parcelrow.com/request">Name your county →</a></div>
     <div class="timeline">
       <div class="tl"><div class="d">Today</div><h4>Full access, instantly.</h4><p>Card up front, nothing charged. Open your county and click your first parcel within the minute.</p></div>
       <div class="tl"><div class="d">Day 6</div><h4>We email you — on purpose.</h4><p>A plain reminder the day before your trial ends, with a one-click cancel link. Decide with a clear head; nobody gets charged by ambush.</p></div>
@@ -88,7 +109,7 @@
       <dt>Why do you ask for a card up front?</dt>
       <dd>Because it keeps the room serious. Card-up-front filters for people who actually intend to work the county — and the day-6 reminder means the card is a convenience, not a trap.</dd>
       <dt>My county isn't live. How long does a build take?</dt>
-      <dd>The pipeline that built two counties is repeatable: most US counties can be live within weeks of a request, faster where the county publishes good data. Founding accounts steer the queue.</dd>
+      <dd>The pipeline that built two counties is repeatable: most US counties can be live within weeks of a request, faster where the county publishes good data. Requests steer the queue — and pre-launch requesters lock the $99/mo founder rate for life.</dd>
       <dt>Is this a replacement for CoStar or Reonomy?</dt>
       <dd>No — it's the thing they don't make: a single county, mapped to the parcel, with zoning capacity math and a live pipeline, at a price a solo broker can expense. Depth over breadth.</dd>
     </dl>
@@ -102,7 +123,7 @@
       <h2>Your county is waiting.</h2>
     </div>
     <div>
-      <a class="btn btn-primary" href="mailto:andrew@parcelrow.com?subject=Open%20my%20county">Open your county →</a>
+      <a class="btn btn-primary" href="https://app.parcelrow.com/api/checkout?plan=county">Open your county →</a>
       <div class="subcta" style="color:#8a8272">No commitment · cancel anytime</div>
     </div>
   </div>
@@ -112,9 +133,12 @@
     <div class="l">
       <svg viewBox="0 0 100 100" aria-hidden="true"><rect x="20" y="20" width="60" height="60" fill="none" stroke="#f7f3ea" stroke-width="9"/><line x1="50" y1="20" x2="50" y2="80" stroke="#f7f3ea" stroke-width="8"/><line x1="20" y1="50" x2="80" y2="50" stroke="#f7f3ea" stroke-width="8"/><rect x="54" y="24" width="22" height="22" fill="#b8956a"/></svg>
       <span class="wm" style="font-size:15px"><span style="color:#f7f3ea">parcel</span><span style="color:#b8956a">row</span></span>
-      <span>— a <a href="https://getvantrow.com">Vantrow</a> company · sibling of <a href="https://eaverow.com">Eaverow</a></span>
+      <span class="fam-sep">—</span>
+      <!-- vantrow:family-bar:start variant=dark -->
+      <a href="https://getvantrow.com" style="display:inline-flex;align-items:baseline;gap:0.45em;text-decoration:none;color:inherit;font:inherit"><img src="https://getvantrow.com/brand/vantrow-mark-duo-dark.svg" alt="" style="height:1.3em;width:1.3em;align-self:center" />a <span style="font-weight:700;letter-spacing:-0.02em"><span style="color:#F5F3EB">Vant</span><span style="color:#B8956A">row</span></span> company</a>
+      <!-- vantrow:family-bar:end -->
     </div>
-    <div><a href="mailto:andrew@parcelrow.com">andrew@parcelrow.com</a> · <a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a> · Public-records data, cited at the source</div>
+    <div><a href="mailto:andrew@parcelrow.com">andrew@parcelrow.com</a> · <a href="about.html">About</a> · <a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a> · Public-records data, cited at the source</div>
   </div>
 </footer>
 </body>
