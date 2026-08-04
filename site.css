@@ -124,6 +124,26 @@ section { padding:36px 0 8px; }
 @media (max-width:880px){ .wg li { border-right:0; } .wg li:nth-last-child(-n+2) { border-bottom:1px solid var(--line); } .wg li:last-child { border-bottom:0; } }
 .wg-cta { margin:18px 0 0; }
 
+/* answer surface (/answers) — pages written to be quotable by a person or an
+   answer engine: the answer first, the sources named, the terms defined. */
+.answer { max-width:760px; }
+.answer h2 { font-size:24px; margin:34px 0 10px; }
+.answer p { font-family:var(--sans); font-size:15px; line-height:1.65; color:var(--ink); margin:0 0 14px; }
+.answer ul, .answer ol { font-family:var(--sans); font-size:14.5px; line-height:1.7; color:var(--ink); margin:0 0 16px; padding-left:22px; }
+.answer li { margin-bottom:5px; }
+.capsule { border-left:3px solid var(--gold); background:var(--card); padding:16px 20px; margin:0 0 26px; }
+.answer .capsule { font-size:16px; color:var(--ink); margin-bottom:26px; }
+cite { font-style:normal; font-family:var(--mono); font-size:11.5px; letter-spacing:.02em; color:var(--gold-ink); }
+cite a { color:var(--gold-ink); }
+.entities { max-width:760px; border-top:1px solid var(--line); padding-top:6px; }
+.entities dt { font-family:var(--mono); font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--gold-ink); margin:16px 0 4px; }
+.entities dd { font-family:var(--sans); font-size:13.5px; color:var(--mut); line-height:1.6; margin:0; }
+.ansgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:12px; margin-top:8px; }
+.ans { border:1px solid var(--line); background:#fff; padding:18px 20px; text-decoration:none; display:block; }
+.ans:hover { border-color:var(--brand); }
+.ans .q { font-family:var(--sans); font-weight:700; font-size:15px; color:var(--ink); margin-bottom:6px; display:block; }
+.ans .a { font-family:var(--sans); font-size:13.5px; color:var(--mut); line-height:1.55; }
+
 .final { background:var(--vault); margin-top:54px; }
 .final .in { max-width:1100px; margin:0 auto; padding:40px 24px; display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; }
 .final .ey { font-family:var(--mono); font-size:10px; letter-spacing:.3em; color:var(--gold); text-transform:uppercase; margin-bottom:8px; }

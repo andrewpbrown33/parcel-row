@@ -1,0 +1,31 @@
+# Parcelrow
+
+> Parcelrow is a live county map room for commercial brokers, land investors, and developers: every parcel, its zoning capacity, its owner's portfolio, and the development pipeline — rebuilt weekly from county public records.
+
+Parcelrow rebuilds a county's public record into one map every Monday: the parcel
+fabric with computed zoning capacity, the owner graph behind LLC-held title, recorded
+sales, and the active development pipeline. Every number traces to a named public
+source — the state cadastre, the county appraiser and clerk, the corporate registry,
+and county permit and planning portals. One county per subscription; the underlying
+data is public record, cited at the source.
+
+## Key pages
+
+- [parcelrow — See the deals your county is hiding](https://parcelrow.com/): Parcelrow is a live county map room for commercial brokers and investors: every parcel, its zoning capacity, its owner's portfolio, and the development pipeline — rebuilt weekly from county records, for any county in America.
+- [Available markets](https://parcelrow.com/markets.html): Parcelrow is built county by county. Two Florida counties live today; any US county enters the build queue on request.
+- [Pricing](https://parcelrow.com/pricing.html): One price per county. $149/mo or $1,428/yr (20% off), 7-day free trial, and a lifetime $99/mo founder rate for anyone who requests a county before it exists. No seats, no meters, no calls.
+- [About](https://parcelrow.com/about.html): Parcelrow is a Vantrow company: purpose-built for one industry, priced as a product, and yours to keep. The studio behind it builds the custom tier when a firm outgrows the product.
+- [Answers](https://parcelrow.com/answers/): Plain answers to the questions land people actually ask: finding underbuilt parcels, unmasking LLC ownership, zoning versus future land use, and where county parcel data really comes from.
+- [Florida markets](https://parcelrow.com/states/florida.html): Parcelrow in Florida: Indian River and St. Lucie counties live — 75,736 parcels with zoning capacity, owner portfolios, and the development pipeline. Brevard and Martin in the queue; any Florida county on request.
+
+## Answers
+
+- [How do you find underbuilt parcels in a county?](https://parcelrow.com/answers/how-to-find-underbuilt-parcels.html): Underbuilt parcels are the ones using far less than their zoning allows. Here is the data you need, how to compute the gap at county scale, and why most underbuilt lists go stale within a quarter.
+- [Where does county parcel data come from, and how current is it?](https://parcelrow.com/answers/where-county-parcel-data-comes-from.html): Parcel data originates with the county property appraiser and the clerk of court, then flows into a statewide annual file. Knowing each source's refresh cadence tells you how stale your map really is.
+- [Who owns a property held by an LLC?](https://parcelrow.com/answers/who-owns-this-property-llc.html): The appraiser names the LLC, not the person. Here is the public-records path from an entity-held parcel to the human behind it, and to the rest of that owner's portfolio.
+- [What is the difference between zoning and future land use?](https://parcelrow.com/answers/zoning-vs-future-land-use.html): Zoning is what a parcel can build today; future land use is the ceiling a rezoning can reach. Where the two disagree is where upzoning value sits — and how to find those parcels county-wide.
+
+## Optional
+
+- [Privacy](https://parcelrow.com/privacy.html)
+- [Terms](https://parcelrow.com/terms.html)

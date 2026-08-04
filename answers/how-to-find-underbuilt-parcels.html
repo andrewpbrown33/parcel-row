@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How do you find underbuilt parcels in a county? — parcelrow</title>
+<meta name="description" content="Underbuilt parcels are the ones using far less than their zoning allows. Here is the data you need, how to compute the gap at county scale, and why most underbuilt lists go stale within a quarter.">
+<link rel="icon" type="image/svg+xml" href="../assets/icon.svg">
+<link rel="stylesheet" href="../site.css">
+<link rel="canonical" href="https://parcelrow.com/answers/how-to-find-underbuilt-parcels.html">
+<!-- vantrow:org-jsonld:start -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://parcelrow.com/#organization","name":"Parcelrow","url":"https://parcelrow.com","logo":"https://getvantrow.com/brand/parcelrow/parcelrow-mark.svg","description":"See the deals your county is hiding — parcel data, zoning capacity, and development signals on a live map.","parentOrganization":{"@id":"https://getvantrow.com/#organization"}}</script>
+<!-- vantrow:org-jsonld:end -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is an underbuilt parcel the same as a vacant lot?","acceptedAnswer":{"@type":"Answer","text":"No. A vacant lot is one case of underbuilt, and usually the most competitive one. The larger opportunity is improved parcels using a fraction of their allowance — an aging single-story building on land zoned for six floors."}},{"@type":"Question","name":"Can you find underbuilt parcels without buying software?","acceptedAnswer":{"@type":"Answer","text":"Yes, for a handful of parcels. Pull the appraiser's record and the zoning district, then compute the allowed build by hand. It stops working at county scale, where the join across appraiser, zoning, future land use, and permit data is the whole job."}},{"@type":"Question","name":"How often does an underbuilt list need rebuilding?","acceptedAnswer":{"@type":"Answer","text":"Continuously. Sales, permits, rezonings, and site plans all change the answer. Parcelrow rebuilds the full county every Monday so the ranking reflects the current record rather than the quarter it was exported."}}]}</script>
+</head>
+<body>
+<nav><div class="wrap nav-in">
+  <a class="nav-l" href="../index.html">
+    <svg viewBox="0 0 100 100" aria-hidden="true"><rect x="20" y="20" width="60" height="60" fill="none" stroke="#4a72a0" stroke-width="9"/><line x1="50" y1="20" x2="50" y2="80" stroke="#4a72a0" stroke-width="8"/><line x1="20" y1="50" x2="80" y2="50" stroke="#4a72a0" stroke-width="8"/><rect x="54" y="24" width="22" height="22" fill="#b8956a"/></svg>
+    <span class="wm"><span style="color:var(--brand)">parcel</span><span style="color:var(--gold)">row</span></span>
+    <span class="by">a Vantrow company</span>
+  </a>
+  <div class="nav-r">
+    <a href="../markets.html">Markets</a><a href="../pricing.html">Pricing</a><a class="on" href="./">Answers</a><a href="../about.html">About</a>
+    <a class="btn btn-primary btn-sm" href="https://app.parcelrow.com/login">Client login</a>
+  </div>
+</div></nav>
+
+<div class="wrap">
+  <div class="crumb"><a href="../index.html">parcelrow</a> / <a href="./">answers</a> / underbuilt parcels</div>
+  <header class="page">
+    <div class="eyebrow">Answer</div>
+    <h1>How do you find underbuilt parcels in a county?</h1>
+  </header>
+
+  <div class="answer">
+    <p class="capsule" data-aeo="answer">Compare what each parcel has built against what its zoning allows. Pull the county appraiser's building area, the parcel's zoning district, and the district's density and floor-area limits, then rank every parcel by the gap between allowed and existing. The largest gaps are your underbuilt parcels: a single-story building on a corridor zoned for six floors.</p>
+
+    <h2>What makes a parcel "underbuilt"?</h2>
+    <p>Underbuilt is a ratio, not a category. It is the built area or unit count a parcel actually carries, divided by what its zoning district and future land use designation would permit today. A parcel at 15% of its allowance is underbuilt; the same building on land zoned for exactly what it is, is not.</p>
+    <p>That framing matters because it changes what you look at:</p>
+    <ul>
+      <li><strong>Vacant land</strong> is the obvious case, and the one every other buyer has already found.</li>
+      <li><strong>Improved parcels well under their allowance</strong> are where the quiet opportunity sits — they do not look like development sites in a listing search.</li>
+      <li><strong>Assemblages</strong> only appear when you rank neighbours together, because no single lot clears the threshold alone.</li>
+    </ul>
+
+    <h2>What data do you need, and where does it come from?</h2>
+    <p>Four public sources, joined on the parcel identifier:</p>
+    <ul>
+      <li><strong>The parcel fabric and building characteristics</strong> — the county property appraiser's roll, republished statewide in Florida as the annual cadastral file. <cite>Florida Department of Revenue, statewide parcel (NAL) and GIS cadastral files</cite></li>
+      <li><strong>Zoning districts and the land development code</strong> — the county's adopted zoning atlas plus the code text that sets density, height, and floor-area limits per district. <cite>County land development code and adopted zoning atlas</cite></li>
+      <li><strong>Future land use</strong> — the comprehensive plan's designation, which governs what a rezoning could reach. <cite>County comprehensive plan, future land use map</cite></li>
+      <li><strong>Permits and site plans</strong> — so a parcel that is already spoken for drops out of the ranking. <cite>County permit and planning portals</cite></li>
+    </ul>
+    <p>The join is the hard part. Appraiser records, zoning polygons, and permit rows rarely share a clean key, and each arrives on its own schedule.</p>
+
+    <h2>How do you compute the allowed build?</h2>
+    <p>For each parcel, read the controlling limit from its district and apply it to the lot area:</p>
+    <ol>
+      <li>Take the lot area from the parcel geometry, not the tax roll's stated acreage where the two disagree.</li>
+      <li>Apply the district's floor area ratio for commercial capacity, or its units-per-acre for residential.</li>
+      <li>Subtract what exists — the appraiser's heated or gross building area, or the recorded unit count.</li>
+      <li>Rank by the remainder, in square feet or units, not by percentage alone. A 40% gap on ten acres beats a 90% gap on a quarter acre.</li>
+    </ol>
+    <p>Use one method across the whole county. A ranking is only meaningful if every parcel was measured the same way, which is why parcelrow computes capacity with a constant method rather than parcel-by-parcel judgement.</p>
+
+    <h2>Why do most underbuilt lists go stale?</h2>
+    <p>Because they are exports. A list pulled in January reflects January: since then parcels have sold, permits have been issued, rezonings have passed, and site plans have been approved. The parcels that matter most are exactly the ones changing state.</p>
+    <p>A list that is not rebuilt on a schedule quietly becomes a record of last quarter's opportunity. Parcelrow rebuilds the entire county every Monday for this reason. <cite>Parcelrow, weekly county rebuild across 75,736 live parcels</cite></p>
+
+    <h2>What does this look like on a live map?</h2>
+    <p>The ranking is only useful when it is spatial. On the map the underbuilt parcels carry the gap as a value you can sort and filter, next to the owner behind the title and any pipeline project already filed nearby.</p>
+    <p>Parcelrow runs this today across two Florida counties, with any US county available on request. See <a href="../markets.html">available markets</a>, or read <a href="who-owns-this-property-llc.html">how to find the owner behind an LLC</a> once a parcel is worth a call.</p>
+
+    <h2>Terms used here</h2>
+    <dl class="entities">
+      <dt>Floor area ratio (FAR)</dt>
+      <dd>The ratio of permitted building floor area to lot area. An FAR of 2.0 on a 20,000 sq ft lot permits 40,000 sq ft of building.</dd>
+      <dt>Future land use (FLU)</dt>
+      <dd>The comprehensive plan designation that governs what zoning a parcel could obtain. Zoning is what is allowed now; FLU is the ceiling a rezoning can reach.</dd>
+      <dt>Cadastre</dt>
+      <dd>The official parcel-level record of land: boundaries, ownership, and assessed characteristics. In Florida, county appraiser rolls are compiled into a statewide cadastral file.</dd>
+      <dt>Zoning district</dt>
+      <dd>The mapped classification that sets permitted uses and the density, height, and area limits for every parcel inside it.</dd>
+    </dl>
+
+    <h2>Common questions</h2>
+    <dl class="faq">
+      <dt>Is an underbuilt parcel the same as a vacant lot?</dt>
+      <dd>No. A vacant lot is one case of underbuilt, and usually the most competitive one. The larger opportunity is improved parcels using a fraction of their allowance — an aging single-story building on land zoned for six floors.</dd>
+      <dt>Can you find underbuilt parcels without buying software?</dt>
+      <dd>Yes, for a handful of parcels. Pull the appraiser's record and the zoning district, then compute the allowed build by hand. It stops working at county scale, where the join across appraiser, zoning, future land use, and permit data is the whole job.</dd>
+      <dt>How often does an underbuilt list need rebuilding?</dt>
+      <dd>Continuously. Sales, permits, rezonings, and site plans all change the answer. Parcelrow rebuilds the full county every Monday so the ranking reflects the current record rather than the quarter it was exported.</dd>
+    </dl>
+  </div>
+
+  <div class="band">
+    <p class="lede">Every parcel in your county, ranked by what it could still build.</p>
+    <a class="btn btn-primary" href="../pricing.html">See pricing</a>
+  </div>
+</div>
+<footer>
+  <div class="in">
+    <div class="l">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><rect x="20" y="20" width="60" height="60" fill="none" stroke="#f7f3ea" stroke-width="9"/><line x1="50" y1="20" x2="50" y2="80" stroke="#f7f3ea" stroke-width="8"/><line x1="20" y1="50" x2="80" y2="50" stroke="#f7f3ea" stroke-width="8"/><rect x="54" y="24" width="22" height="22" fill="#b8956a"/></svg>
+      <span class="wm" style="font-size:15px"><span style="color:#f7f3ea">parcel</span><span style="color:#b8956a">row</span></span>
+      <span class="fam-sep">—</span>
+      <!-- vantrow:family-bar:start variant=dark -->
+      <a href="https://getvantrow.com" style="display:inline-flex;align-items:baseline;gap:0.45em;text-decoration:none;color:inherit;font:inherit"><img src="https://getvantrow.com/brand/vantrow-mark-duo-dark.svg" alt="" style="height:1.3em;width:1.3em;align-self:center" />a <span style="font-weight:700;letter-spacing:-0.02em"><span style="color:#F5F3EB">Vant</span><span style="color:#B8956A">row</span></span> company</a>
+      <!-- vantrow:family-bar:end -->
+    </div>
+    <div><a href="mailto:andrew@parcelrow.com">andrew@parcelrow.com</a> · <a href="../about.html">About</a> · <a href="../terms.html">Terms</a> · <a href="../privacy.html">Privacy</a> · Public-records data, cited at the source</div>
+  </div>
+</footer>
+</body>
+</html>
