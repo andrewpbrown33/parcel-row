@@ -64,6 +64,10 @@ section { padding:36px 0 8px; }
 .tier .tn { font-family:var(--mono); font-size:10px; letter-spacing:.16em; color:var(--mut); text-transform:uppercase; }
 .tier .pp { font-size:32px; line-height:1.15; min-height:38px; }
 .tier .pp small { font-size:13.5px; color:var(--mut); font-family:var(--sans); }
+/* The price stays per-month in both cycles; this line carries what actually
+   gets charged, so the annual number is never the headline. */
+.tier .billnote { font-family:var(--sans); font-size:12px; color:var(--mut); margin-top:-4px; min-height:17px; }
+.tier .billnote .yr { color:var(--gold-ink); }
 .tier ul { margin:0; padding-left:18px; font-family:var(--sans); font-size:12.5px; color:var(--mut); line-height:1.7; }
 .tier .cta { margin-top:auto; padding-top:12px; }
 .subcta { font-family:var(--sans); font-size:11.5px; color:var(--mut); margin-top:6px; }
