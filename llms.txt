@@ -13,7 +13,7 @@ data is public record, cited at the source.
 
 - [parcelrow — See the deals your county is hiding](https://parcelrow.com/): Parcelrow is a live county map room for commercial brokers and investors: every parcel, its zoning capacity, its owner's portfolio, and the development pipeline — rebuilt weekly from county records, for any county in America.
 - [Available markets](https://parcelrow.com/markets.html): Parcelrow is built county by county. Two Florida counties live today; any US county enters the build queue on request.
-- [Pricing](https://parcelrow.com/pricing.html): One price per county. $149/mo or $1,428/yr (20% off), 7-day free trial, and a lifetime $99/mo founder rate for anyone who requests a county before it exists. No seats, no meters, no calls.
+- [Pricing](https://parcelrow.com/pricing.html): One price per county. $119/mo billed annually (20% off) or $149 month-to-month, 7-day free trial, and a lifetime $99/mo founder rate for anyone who requests a county before it exists. No seats, no meters, no calls.
 - [About](https://parcelrow.com/about.html): Parcelrow is a Vantrow company: purpose-built for one industry, priced as a product, and yours to keep. The studio behind it builds the custom tier when a firm outgrows the product.
 - [Answers](https://parcelrow.com/answers/): Plain answers to the questions land people actually ask: finding underbuilt parcels, unmasking LLC ownership, zoning versus future land use, and where county parcel data really comes from.
 - [Florida markets](https://parcelrow.com/states/florida.html): Parcelrow in Florida: Indian River and St. Lucie counties live — 75,736 parcels with zoning capacity, owner portfolios, and the development pipeline. Brevard and Martin in the queue; any Florida county on request.

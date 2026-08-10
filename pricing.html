@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pricing — parcelrow</title>
-<meta name="description" content="One price per county. $149/mo or $1,428/yr (20% off), 7-day free trial, and a lifetime $99/mo founder rate for anyone who requests a county before it exists. No seats, no meters, no calls.">
+<meta name="description" content="One price per county. $119/mo billed annually (20% off) or $149 month-to-month, 7-day free trial, and a lifetime $99/mo founder rate for anyone who requests a county before it exists. No seats, no meters, no calls.">
 <link rel="icon" type="image/svg+xml" href="assets/icon.svg">
 <link rel="stylesheet" href="site.css">
 <!-- vantrow:org-jsonld:start -->
@@ -34,10 +34,10 @@
 
   <section style="padding-top:10px">
     <div class="billtoggle" id="billtoggle">
-      <button type="button" class="on" data-cycle="monthly">Monthly</button>
-      <button type="button" data-cycle="annual">Annual · 20% off</button>
+      <button type="button" data-cycle="monthly">Monthly</button>
+      <button type="button" class="on" data-cycle="annual">Annual · 20% off</button>
     </div>
-    <div class="tiers" id="tiers">
+    <div class="tiers annual" id="tiers">
       <div class="tier">
         <div class="tn">One county</div>
         <div class="pp"><span class="mo">$149<small> /mo</small></span><span class="yr">$119<small> /mo</small></span></div>
@@ -48,7 +48,7 @@
           <li>Owners, assemblages, pipeline</li>
           <li><span class="mo">Switch to annual any time and save 20%</span><span class="yr">One charge a year, not twelve</span></li>
         </ul>
-        <div class="cta"><a class="btn btn-primary" data-monthly="https://app.parcelrow.com/api/checkout?plan=county" data-annual="https://app.parcelrow.com/api/checkout?plan=county_annual" href="https://app.parcelrow.com/api/checkout?plan=county">Start 7-day free trial →</a>
+        <div class="cta"><a class="btn btn-primary" data-monthly="https://app.parcelrow.com/api/checkout?plan=county" data-annual="https://app.parcelrow.com/api/checkout?plan=county_annual" href="https://app.parcelrow.com/api/checkout?plan=county_annual">Start 7-day free trial →</a>
         <div class="subcta">No commitment · cancel anytime</div></div>
       </div>
       <div class="tier hot">
@@ -62,7 +62,7 @@
           <li>Counties you need get built on request</li>
           <li><span class="mo">Switch to annual any time and save 20%</span><span class="yr">One charge a year, not twelve</span></li>
         </ul>
-        <div class="cta"><a class="btn btn-primary" data-monthly="https://app.parcelrow.com/api/checkout?plan=bundle" data-annual="https://app.parcelrow.com/api/checkout?plan=bundle_annual" href="https://app.parcelrow.com/api/checkout?plan=bundle">Start 7-day free trial →</a>
+        <div class="cta"><a class="btn btn-primary" data-monthly="https://app.parcelrow.com/api/checkout?plan=bundle" data-annual="https://app.parcelrow.com/api/checkout?plan=bundle_annual" href="https://app.parcelrow.com/api/checkout?plan=bundle_annual">Start 7-day free trial →</a>
         <div class="subcta">No commitment · cancel anytime</div></div>
       </div>
       <div class="tier">
@@ -125,7 +125,7 @@
       <h2>Your county is waiting.</h2>
     </div>
     <div>
-      <a class="btn btn-primary" href="https://app.parcelrow.com/api/checkout?plan=county">Open your county →</a>
+      <a class="btn btn-primary" href="https://app.parcelrow.com/api/checkout?plan=county_annual">Open your county →</a>
       <div class="subcta" style="color:#8a8272">No commitment · cancel anytime</div>
     </div>
   </div>
