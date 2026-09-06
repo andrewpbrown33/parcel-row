@@ -1,0 +1,25 @@
+name: brand drift
+
+# The registry at getvantrow.com is the family's source of truth for brand
+# colour; this job fails the build when this site's :root tokens disagree with
+# it. Runs on every change, and weekly so a registry edit made elsewhere still
+# surfaces here within the week. See scripts/check-brand-drift.mjs for the
+# mapping and for which side moves when it's red.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "0 13 * * 1" # Mondays, 13:00 UTC
+  workflow_dispatch:
+
+jobs:
+  drift:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/check-brand-drift.mjs
