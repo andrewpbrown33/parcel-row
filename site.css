@@ -2,8 +2,8 @@
    Tokens mirror packages/brand/tokens.css. The homepage stays self-contained. */
 :root { color-scheme: light;
   --cream:#f7f3ea; --card:#fbf8f1; --ink:#1c1a16; --mut:#6f6656; --line:#ddd5c2;
-  --brand:#233c46; --brand-deep:#39587c; --brand-wash:#e5ebf3;
-  --gold:#cfcabe; --gold-ink:#856540; --thread-ink:#3c382e; --eyebrow-ink:#7F603D; --gold-pale:#f0ebde;
+  --brand:#4a72a0; --brand-deep:#39587c; --brand-wash:#e5ebf3;
+  --gold:#b8956a; --gold-ink:#856540; --gold-pale:#eee3d0;
   --vault:#171410; --live:#2a632f; --live-wash:#e7ede4;
   --serif:Georgia,"Times New Roman",serif;
   --sans:"Manrope","Helvetica Neue",Helvetica,Arial,ui-sans-serif,sans-serif;
@@ -24,10 +24,6 @@ nav { border-bottom:1px solid var(--line); background:var(--cream); }
 .nav-r { display:flex; align-items:center; gap:20px; font-family:var(--sans); font-size:13.5px; }
 .nav-r a { color:var(--ink); text-decoration:none; }
 .nav-r a:hover, .nav-r a.on { color:var(--brand); }
-/* `.nav-r a` out-specifies `.btn-primary`, so the button was inheriting ink
-   rather than its own white. That was a 3.48:1 defect on the old steel and
-   harbor took it to 1.49:1 — the swap did not cause it, it exposed it. */
-.nav-r a.btn-primary, .nav-r a.btn-primary:hover { color:#fff; }
 .btn { font-family:var(--sans); font-weight:600; display:inline-block; text-decoration:none; text-align:center; }
 .btn-primary { background:var(--brand); color:#fff; padding:11px 20px; font-size:14.5px; }
 .btn-primary:hover { background:var(--brand-deep); color:#fff; }
@@ -41,7 +37,7 @@ header.page { padding:26px 0 8px; }
 h1 { font-size:40px; font-weight:400; line-height:1.12; margin:8px 0 12px; letter-spacing:-.02em; text-wrap:balance; }
 h2 { font-size:28px; font-weight:400; margin:0 0 10px; letter-spacing:-.01em; text-wrap:balance; }
 section { padding:36px 0 8px; }
-.eyebrow { font-family:var(--mono); font-size:11px; letter-spacing:.18em; color:var(--eyebrow-ink); text-transform:uppercase; margin-bottom:10px; }
+.eyebrow { font-family:var(--mono); font-size:11px; letter-spacing:.18em; color:var(--gold-ink); text-transform:uppercase; margin-bottom:10px; }
 .lede { font-family:var(--sans); font-size:15px; color:var(--mut); line-height:1.6; margin:0 0 22px; max-width:64ch; }
 .statstrip { font-family:var(--mono); font-size:11px; letter-spacing:.12em; color:var(--gold-ink); text-transform:uppercase; margin-bottom:8px; }
 
@@ -162,6 +158,4 @@ footer .in { max-width:1100px; margin:0 auto; padding:20px 24px; display:flex; a
 footer a { color:#a99e8a; text-decoration:none; }
 footer .l { display:flex; align-items:center; gap:9px; flex-wrap:wrap; }
 footer svg { width:18px; height:18px; }
-/* On the vault footer, so it needs LIGHTENING — #6b6455 measured 3.13:1
-   against the dark ground, not the light one. */
-footer .fam-sep { color:#8a8272; }
+footer .fam-sep { color:#6b6455; }
